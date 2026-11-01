@@ -1,0 +1,853 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elite Motors | Premium Car Showroom</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #f5f6f8;
+    color: #17202a;
+}
+
+header {
+    background: #101820;
+    color: white;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 800;
+    color: #d6a84f;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: #d6a84f;
+}
+
+.hero {
+    min-height: 570px;
+    display: flex;
+    align-items: center;
+    padding: 70px 8%;
+    color: white;
+    background:
+    linear-gradient(90deg, rgba(8,15,22,.95), rgba(8,15,22,.3)),
+    url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1800&q=90')
+    center/cover;
+}
+
+.hero-content {
+    max-width: 600px;
+    animation: fadeUp 1s ease;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 6vw, 65px);
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: #d6a84f;
+}
+
+.hero p {
+    color: #ddd;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    background: #d6a84f;
+    color: #101820;
+    padding: 13px 25px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.btn:hover {
+    background: white;
+    transform: translateY(-3px);
+}
+
+section {
+    padding: 75px 7%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title h2 {
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+.section-title p {
+    color: #777;
+}
+
+.search-area {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 35px;
+    box-shadow: 0 4px 18px #0000000c;
+}
+
+.search-area input,
+.search-area select {
+    flex: 1;
+    min-width: 150px;
+    padding: 13px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+}
+
+.car-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+.car-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px #0000000c;
+    transition: .35s;
+}
+
+.car-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px #00000018;
+}
+
+.car-card img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    display: block;
+}
+
+.car-info {
+    padding: 20px;
+}
+
+.car-info h3 {
+    font-size: 21px;
+    margin-bottom: 8px;
+}
+
+.car-info p {
+    color: #777;
+    font-size: 14px;
+    margin: 7px 0;
+}
+
+.price {
+    color: #b58631;
+    font-size: 22px;
+    font-weight: 800;
+    margin: 15px 0;
+}
+
+.car-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.car-actions button {
+    flex: 1;
+    padding: 11px 5px;
+    font-size: 12px;
+}
+
+.outline {
+    background: white;
+    color: #101820;
+    border: 1px solid #d6a84f;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.services {
+    background: #101820;
+    color: white;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.service-card {
+    padding: 30px 20px;
+    border: 1px solid #39434b;
+    border-radius: 10px;
+    text-align: center;
+    transition: .3s;
+}
+
+.service-card:hover {
+    background: #202d37;
+    transform: translateY(-5px);
+}
+
+.service-card .icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.service-card p {
+    color: #bbb;
+    margin-top: 10px;
+    line-height: 1.6;
+}
+
+.sell-section {
+    background: white;
+    text-align: center;
+}
+
+.sell-section p {
+    color: #777;
+    margin: 15px auto 25px;
+    max-width: 600px;
+    line-height: 1.7;
+}
+
+footer {
+    background: #0b1218;
+    color: white;
+    text-align: center;
+    padding: 35px 15px;
+}
+
+footer p {
+    color: #aaa;
+    margin-top: 10px;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #000b;
+    z-index: 200;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    width: 100%;
+    max-width: 450px;
+    border-radius: 12px;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: fadeUp .3s ease;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+}
+
+.modal-content input,
+.modal-content select,
+.modal-content textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.modal-content textarea {
+    resize: vertical;
+}
+
+.modal-content .btn {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.close {
+    position: absolute;
+    right: 18px;
+    top: 12px;
+    font-size: 27px;
+    cursor: pointer;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media(max-width: 650px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav {
+        gap: 13px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .hero {
+        min-height: 480px;
+    }
+
+    section {
+        padding: 55px 5%;
+    }
+
+    .section-title h2 {
+        font-size: 27px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">ELITE MOTORS.</div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#cars">Available Cars</a>
+        <a href="#services">Services</a>
+        <a href="#sell">Sell Car</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero" id="home">
+    <div class="hero-content">
+        <h1>Drive Your <span>Dream</span> Car Today.</h1>
+        <p>
+            Discover premium vehicles at the best prices.
+            Buy, sell and pre-book your favourite car
+            with a simple and professional experience.
+        </p>
+        <a href="#cars" class="btn">Explore Cars →</a>
+    </div>
+</div>
+
+<!-- CARS -->
+<section id="cars">
+
+    <div class="section-title">
+        <h2>Our Premium Collection</h2>
+        <p>Find your perfect car from our latest collection.</p>
+    </div>
+
+    <div class="search-area">
+        <input type="text" id="searchInput"
+        placeholder="Search car name...">
+
+        <select id="brandFilter">
+            <option value="all">All Brands</option>
+            <option value="Toyota">Toyota</option>
+            <option value="Honda">Honda</option>
+            <option value="BMW">BMW</option>
+            <option value="Mercedes">Mercedes</option>
+            <option value="Suzuki">Suzuki</option>
+        </select>
+
+        <select id="sortPrice">
+            <option value="default">Sort by Price</option>
+            <option value="low">Low to High</option>
+            <option value="high">High to Low</option>
+        </select>
+    </div>
+
+    <div class="car-grid" id="carGrid"></div>
+
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+
+    <div class="section-title">
+        <h2>Why Choose Elite Motors?</h2>
+        <p style="color:#bbb">Your trusted partner for premium cars.</p>
+    </div>
+
+    <div class="service-grid">
+
+        <div class="service-card">
+            <div class="icon">🚘</div>
+            <h3>Premium Cars</h3>
+            <p>Explore a collection of quality vehicles.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="icon">⚡</div>
+            <h3>Quick Booking</h3>
+            <p>Submit your booking request in just a few steps.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="icon">🤝</div>
+            <h3>Easy Buying</h3>
+            <p>Get assistance throughout your purchase.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="icon">💎</div>
+            <h3>Trusted Service</h3>
+            <p>Professional support for buyers and sellers.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- SELL CAR -->
+<section class="sell-section" id="sell">
+    <div class="section-title">
+        <h2>Want to Sell Your Car?</h2>
+    </div>
+
+    <p>
+        Get in touch with our showroom. Submit your
+        car details and our team will contact you
+        regarding the selling process.
+    </p>
+
+    <button class="btn" onclick="openSellModal()">
+        Sell Your Car Now
+    </button>
+</section>
+
+<!-- CONTACT -->
+<footer id="contact">
+    <h2 style="color:#d6a84f">ELITE MOTORS</h2>
+    <p>Your Dream Car, Our Commitment.</p>
+    <p>📍 Pakistan | 📞 +92 300 1234567</p>
+    <p>© 2026 Elite Motors. All Rights Reserved.</p>
+</footer>
+
+<!-- BOOKING MODAL -->
+<div class="modal" id="bookingModal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('bookingModal')">&times;</span>
+
+        <h2>Pre-Book Your Car</h2>
+
+        <form id="bookingForm">
+            <input type="hidden" id="bookingCar">
+
+            <input type="text" id="customerName"
+            placeholder="Your Full Name" required>
+
+            <input type="tel" id="customerPhone"
+            placeholder="Phone Number" required>
+
+            <input type="email" id="customerEmail"
+            placeholder="Email Address">
+
+            <input type="date" id="bookingDate" required>
+
+            <textarea id="bookingMessage"
+            placeholder="Additional requirements"
+            rows="3"></textarea>
+
+            <button type="submit" class="btn">
+                Submit Booking
+            </button>
+        </form>
+    </div>
+</div>
+
+<!-- BUY MODAL -->
+<div class="modal" id="buyModal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('buyModal')">&times;</span>
+
+        <h2>Purchase Inquiry</h2>
+
+        <form id="buyForm">
+            <input type="hidden" id="buyCar">
+
+            <input type="text" id="buyerName"
+            placeholder="Your Full Name" required>
+
+            <input type="tel" id="buyerPhone"
+            placeholder="Phone Number" required>
+
+            <textarea id="buyerMessage"
+            placeholder="Your message" rows="3"></textarea>
+
+            <button class="btn" type="submit">
+                Send Purchase Inquiry
+            </button>
+        </form>
+    </div>
+</div>
+
+<!-- SELL MODAL -->
+<div class="modal" id="sellModal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('sellModal')">&times;</span>
+
+        <h2>Sell Your Car</h2>
+
+        <form id="sellForm">
+            <input type="text" id="sellerName"
+            placeholder="Your Name" required>
+
+            <input type="tel" id="sellerPhone"
+            placeholder="Phone Number" required>
+
+            <input type="text" id="sellerCar"
+            placeholder="Car Brand & Model" required>
+
+            <input type="number" id="sellerYear"
+            placeholder="Manufacturing Year" required>
+
+            <input type="text" id="sellerPrice"
+            placeholder="Expected Price (PKR)" required>
+
+            <textarea id="sellerDetails"
+            placeholder="Additional Car Details"
+            rows="3"></textarea>
+
+            <button class="btn" type="submit">
+                Submit Car Details
+            </button>
+        </form>
+    </div>
+</div>
+
+<script>
+
+// CAR DATABASE
+const cars = [
+    {
+        name: "Toyota Corolla Grande",
+        brand: "Toyota",
+        year: 2023,
+        fuel: "Petrol",
+        transmission: "Automatic",
+        price: 7500000,
+        image: "https://images.unsplash.com/photo-1623869675781-80aa31012a5a?auto=format&fit=crop&w=900&q=85"
+    },
+    {
+        name: "Honda Civic RS",
+        brand: "Honda",
+        year: 2024,
+        fuel: "Petrol",
+        transmission: "Automatic",
+        price: 9500000,
+        image: "https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=900&q=85"
+    },
+    {
+        name: "BMW 3 Series",
+        brand: "BMW",
+        year: 2023,
+        fuel: "Petrol",
+        transmission: "Automatic",
+        price: 18000000,
+        image: "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=900&q=85"
+    },
+    {
+        name: "Mercedes C-Class",
+        brand: "Mercedes",
+        year: 2022,
+        fuel: "Petrol",
+        transmission: "Automatic",
+        price: 22000000,
+        image: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=900&q=85"
+    },
+    {
+        name: "Suzuki Alto VXL",
+        brand: "Suzuki",
+        year: 2024,
+        fuel: "Petrol",
+        transmission: "Manual",
+        price: 2800000,
+        image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=85"
+    },
+    {
+        name: "Toyota Fortuner",
+        brand: "Toyota",
+        year: 2023,
+        fuel: "Diesel",
+        transmission: "Automatic",
+        price: 19000000,
+        image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=900&q=85"
+    }
+];
+
+const carGrid = document.getElementById("carGrid");
+
+function formatPrice(price) {
+    return "Rs. " + price.toLocaleString("en-PK");
+}
+
+// DISPLAY CARS
+function displayCars() {
+
+    const search = document.getElementById("searchInput")
+        .value.toLowerCase();
+
+    const brand = document.getElementById("brandFilter").value;
+
+    const sort = document.getElementById("sortPrice").value;
+
+    let filtered = cars.filter(car =>
+        car.name.toLowerCase().includes(search) &&
+        (brand === "all" || car.brand === brand)
+    );
+
+    if (sort === "low") {
+        filtered.sort((a,b) => a.price - b.price);
+    }
+
+    if (sort === "high") {
+        filtered.sort((a,b) => b.price - a.price);
+    }
+
+    carGrid.innerHTML = "";
+
+    if (filtered.length === 0) {
+        carGrid.innerHTML = "<p>No cars found. Try another search.</p>";
+        return;
+    }
+
+    filtered.forEach(car => {
+
+        const index = cars.indexOf(car);
+
+        carGrid.innerHTML += `
+            <div class="car-card">
+
+                <img src="${car.image}"
+                alt="${car.name}"
+                loading="lazy"
+                onerror="this.src='https://placehold.co/600x400?text=Car+Image'">
+
+                <div class="car-info">
+
+                    <h3>${car.name}</h3>
+
+                    <p>📅 ${car.year} Model</p>
+
+                    <p>⛽ ${car.fuel} | ⚙ ${car.transmission}</p>
+
+                    <div class="price">
+                        ${formatPrice(car.price)}
+                    </div>
+
+                    <div class="car-actions">
+
+                        <button class="btn"
+                        onclick="bookCar(${index})">
+                            Pre-Book
+                        </button>
+
+                        <button class="outline"
+                        onclick="buyCar(${index})">
+                            Buy Now
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+}
+
+displayCars();
+
+document.getElementById("searchInput")
+.addEventListener("input", displayCars);
+
+document.getElementById("brandFilter")
+.addEventListener("change", displayCars);
+
+document.getElementById("sortPrice")
+.addEventListener("change", displayCars);
+
+
+// MODAL FUNCTIONS
+function openModal(id) {
+    document.getElementById(id).style.display = "flex";
+}
+
+function closeModal(id) {
+    document.getElementById(id).style.display = "none";
+}
+
+function bookCar(index) {
+    document.getElementById("bookingCar").value = cars[index].name;
+    openModal("bookingModal");
+}
+
+function buyCar(index) {
+    document.getElementById("buyCar").value = cars[index].name;
+    openModal("buyModal");
+}
+
+function openSellModal() {
+    openModal("sellModal");
+}
+
+// CLOSE MODAL ON OUTSIDE CLICK
+window.addEventListener("click", function(event) {
+    if (event.target.classList.contains("modal")) {
+        event.target.style.display = "none";
+    }
+});
+
+
+// BOOKING SUBMISSION
+document.getElementById("bookingForm")
+.addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+    const booking = {
+        car: document.getElementById("bookingCar").value,
+        name: document.getElementById("customerName").value,
+        phone: document.getElementById("customerPhone").value,
+        email: document.getElementById("customerEmail").value,
+        date: document.getElementById("bookingDate").value,
+        message: document.getElementById("bookingMessage").value
+    };
+
+    saveRequest("bookings", booking);
+
+    alert("Booking request saved successfully! Our team will contact you.");
+
+    this.reset();
+    closeModal("bookingModal");
+});
+
+
+// BUY SUBMISSION
+document.getElementById("buyForm")
+.addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+    const inquiry = {
+        car: document.getElementById("buyCar").value,
+        name: document.getElementById("buyerName").value,
+        phone: document.getElementById("buyerPhone").value,
+        message: document.getElementById("buyerMessage").value
+    };
+
+    saveRequest("purchaseInquiries", inquiry);
+
+    alert("Purchase inquiry saved successfully!");
+
+    this.reset();
+    closeModal("buyModal");
+});
+
+
+// SELL SUBMISSION
+document.getElementById("sellForm")
+.addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+    const seller = {
+        name: document.getElementById("sellerName").value,
+        phone: document.getElementById("sellerPhone").value,
+        car: document.getElementById("sellerCar").value,
+        year: document.getElementById("sellerYear").value,
+        price: document.getElementById("sellerPrice").value,
+        details: document.getElementById("sellerDetails").value
+    };
+
+    saveRequest("sellRequests", seller);
+
+    alert("Your car details have been submitted successfully!");
+
+    this.reset();
+    closeModal("sellModal");
+});
+
+
+// SAVE REQUESTS IN BROWSER
+function saveRequest(key, data) {
+
+    let requests = JSON.parse(localStorage.getItem(key) || "[]");
+
+    data.createdAt = new Date().toISOString();
+
+    requests.push(data);
+
+    localStorage.setItem(key, JSON.stringify(requests));
+}
+
+</script>
+
+</body>
+</html>
